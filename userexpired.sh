@@ -21,18 +21,18 @@ for((i=1; i<=$totalaccounts; i++ ))
        do
            username=$username" " 
        done
-       bulantahun=`echo $tglexp |awk -F" " '{print $2,$6}'`
-       echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/alluser.txt
+       monthyear=`echo $tglexp |awk -F" " '{print $2,$6}'`
+       echo " User : $username Expire date : $tgl $monthyear" >> /root/alluser.txt
        todaystime=`date +%s`
        if [ $userexpireinseconds -ge $todaystime ] ;
            then
            timeto7days=$(( $todaystime + 604800 ))
                 if [ $userexpireinseconds -le $timeto7days ];
                 then                     
-                     echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/infouser.txt
+                     echo " User : $username Expire date : $tgl $monthyear" >> /root/infouser.txt
                 fi
        else
-       echo " User : $username Expire tanggal : $tgl $bulantahun" >> /root/expireduser.txt
+       echo " User : $username Expire date : $tgl $monthyear" >> /root/expireduser.txt
        passwd -l $username
        fi
 done

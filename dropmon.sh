@@ -22,10 +22,10 @@ do
        login=`grep $pid $log |grep "$pidend" |grep "$loginsukses"`
        PID=$pid
        user=`echo $login |awk -F" " '{print $10}' | sed -r "s/'/ /g"`
-       waktu=`echo $login |awk -F" " '{print $2,$3}'`
-       while [ ${#waktu} -lt 13 ]
+       time=`echo $login |awk -F" " '{print $2,$3}'`
+       while [ ${#time} -lt 13 ]
        do
-           waktu=$waktu" " 
+           time=$time" " 
        done
 
        while [ ${#user} -lt 16 ]
@@ -38,7 +38,7 @@ do
        done
 
        fromip=`echo $login |awk -F" " '{print $12}' |awk -F":" '{print $1}'`
-       echo "  $waktu|  $PID | $user|  $fromip "
+       echo "  $time|  $PID | $user|  $fromip "
     fi
 done
 echo "---------------------------------------------------------------" 
