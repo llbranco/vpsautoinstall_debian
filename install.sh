@@ -128,9 +128,9 @@ refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320" >> /etc/squid3/squid.conf && sed -i $MYIP2 /etc/squid3/squid.conf;
 
 # Instalar badvpn
-wget --no-check-certificate -O /usr/bin/badvpn-udpgw "https://github.com/llbranco/vpsautoinstall_debian/raw/master/badvpn-udpgw" && sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local && chmod +x /usr/bin/badvpn-udpgw && screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+wget --no-check-certificate -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/badvpn-udpgw" && sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local && chmod +x /usr/bin/badvpn-udpgw && screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 
-# Instalar dropbear
+# Instalar dropbeargithub
 apt-get -y install dropbear && sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear && sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=109/g' /etc/default/dropbear && sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 22"/g' /etc/default/dropbear && echo "/bin/false" >> /etc/shells && echo "/usr/sbin/nologin" >> /etc/shells
 
 # Upgrade dropbear 
@@ -144,7 +144,7 @@ ln /usr/local/sbin/dropbear /usr/sbin/dropbear
 service dropbear restart
 
 # Instalar openvpn
-apt-get -y install openvpn && wget --no-check-certificate -O /etc/openvpn/openvpn.tar "https://github.com/llbranco/vpsautoinstall_debian/raw/master/openvpn-ubuntu.tar" && cd /etc/openvpn/ && tar xf openvpn.tar && service openvpn restart && wget --no-check-certificate -O /etc/openvpn/cliente.ovpn "https://github.com/llbranco/vpsautoinstall_debian/raw/master/cliente.conf" && sed -i $MYIP2 /etc/openvpn/cliente.ovpn && cd
+apt-get -y install openvpn && wget --no-check-certificate -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/openvpn-ubuntu.tar" && cd /etc/openvpn/ && tar xf openvpn.tar && service openvpn restart && wget --no-check-certificate -O /etc/openvpn/cliente.ovpn "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/cliente.conf" && sed -i $MYIP2 /etc/openvpn/cliente.ovpn && cd
 
 # Instalar iptables-persistent
 apt-get -y install iptables-persistent
@@ -170,21 +170,21 @@ iptables -P INPUT DROP
 invoke-rc.d iptables-persistent save
 
 # Instalar fail2ban
-apt-get -y install fail2ban && wget --no-check-certificate -O /etc/fail2ban/jail.conf "https://github.com/llbranco/vpsautoinstall_debian/raw/master/jail.conf" && sed -i $MYIP2 /etc/fail2ban/jail.conf && service fail2ban restart
+apt-get -y install fail2ban && wget --no-check-certificate -O /etc/fail2ban/jail.conf "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/jail.conf" && sed -i $MYIP2 /etc/fail2ban/jail.conf && service fail2ban restart
 
 # Baixar scripts
 cd
 wget --no-check-certificate -O speedtest_cli.py "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/master/speedtest_cli.py"
 wget --no-check-certificate -O bench-network.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/master/bench-network.sh"
-wget --no-check-certificate -O ps_mem.py "https://github.com/llbranco/vpsautoinstall_debian/raw/master/ps_mem.py"
-wget --no-check-certificate -O dropmon "https://github.com/llbranco/vpsautoinstall_debian/raw/master/dropmon.sh"
-wget --no-check-certificate -O userlogin.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/userlogin.sh"
-wget --no-check-certificate -O userexpired.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/userexpired.sh"
-wget --no-check-certificate -O userlimit.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/userlimit.sh"
-wget --no-check-certificate -O expire.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/expire.sh"
-wget --no-check-certificate -O autokill.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/autokill.sh"
-wget --no-check-certificate -O add-user.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/add-user.sh"
-wget --no-check-certificate -O trial.sh "https://github.com/llbranco/vpsautoinstall_debian/raw/master/trial.sh"
+wget --no-check-certificate -O ps_mem.py "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/ps_mem.py"
+wget --no-check-certificate -O dropmon "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/dropmon.sh"
+wget --no-check-certificate -O userlogin.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/userlogin.sh"
+wget --no-check-certificate -O userexpired.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/userexpired.sh"
+wget --no-check-certificate -O userlimit.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/userlimit.sh"
+wget --no-check-certificate -O expire.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/expire.sh"
+wget --no-check-certificate -O autokill.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/autokill.sh"
+wget --no-check-certificate -O add-user.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/add-user.sh"
+wget --no-check-certificate -O trial.sh "https://raw.githubusercontent.com/llbranco/vpsautoinstall_debian/raw/master/trial.sh"
 
 echo "@reboot root /root/userexpired.sh" > /etc/cron.d/userexpired
 echo "@reboot root /root/userlimit.sh 2" >> /etc/cron.d/userlimit
@@ -230,7 +230,7 @@ echo "unset HISTFILE" >> /etc/profile
 clear
 echo "SERVICOS" 
 echo "-------" 
-echo "Dropbear : 443, 22" 
+echo "Dropbear : 443, 22" github
 echo "Squid   : 80(limit to IP SSH)" 
 echo "badvpn   : badvpn-udpgw port 7300" 
 echo "Fail2Ban : protect SSH brute force" 
