@@ -67,7 +67,7 @@ apt-file update
 
 # Instalar screenfetch
 cd
-wget --no-check-certificate https://github.com/KittyKatt/screenFetch/raw/master/screenfetch-dev
+wget --no-check-certificate https://raw.githubusercontent.com/KittyKatt/screenFetch/master/screenfetch-dev
 mv screenfetch-dev /usr/bin/screenfetch
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .bash_profile
